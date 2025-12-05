@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.Label?>
+
+<AnchorPane fx:id="paneConsole"
+            fx:controller="org.orbis.orbis.controllers.ConsoleController"
+            prefHeight="400.0" prefWidth="500.0"
+            xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1">
+
+    <Label styleClass="pixel-label" text="Консоль" AnchorPane.topAnchor="5.0" AnchorPane.leftAnchor="5.0"/>
+</AnchorPane>

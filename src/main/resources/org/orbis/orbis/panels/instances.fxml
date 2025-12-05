@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Label?>
+
+<AnchorPane fx:id="paneInstances"
+            fx:controller="org.orbis.orbis.controllers.InstancesController"
+            prefHeight="400.0" prefWidth="500.0"
+            xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1">
+
+    <Label styleClass="pixel-label" text="Инстанты" AnchorPane.topAnchor="5.0" AnchorPane.leftAnchor="5.0"/>
+    <HBox fx:id="hboxInstances" layoutX="-1.0" layoutY="18.0" prefHeight="83.0" prefWidth="504.0" AnchorPane.topAnchor="50.0" AnchorPane.leftAnchor="0.0">
+    </HBox>
+</AnchorPane>

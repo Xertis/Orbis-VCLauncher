@@ -5,5 +5,6 @@ module org.orbis.orbis {
 
 
     opens org.orbis.orbis to javafx.fxml;
+    opens org.orbis.orbis.controllers to javafx.fxml;
     exports org.orbis.orbis;
 }

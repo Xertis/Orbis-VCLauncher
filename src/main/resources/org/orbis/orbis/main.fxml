@@ -1,35 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.orbis.orbis.MainController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.orbis.orbis.controllers.MainController">
 
    <left>
       <VBox prefHeight="200.0" prefWidth="100.0" styleClass="dark-vbox" BorderPane.alignment="CENTER">
-         <Button fx:id="btnInstances" mnemonicParsing="false" onAction="#showInstances" prefHeight="26.0"
-                 prefWidth="129.0" text="Инстанты">
+         <Button fx:id="btnInstances" mnemonicParsing="false" onAction="#showInstances" prefHeight="26.0" prefWidth="129.0" text="Инстанты">
             <font>
-               <Font size="18.0"/>
+               <Font size="18.0" />
             </font>
          </Button>
-         <Button fx:id="btnConsole" mnemonicParsing="false" onAction="#showConsole" prefHeight="26.0" prefWidth="135.0"
-                 text="Консоль">
+         <Button fx:id="btnConsole" mnemonicParsing="false" onAction="#showConsole" prefHeight="26.0" prefWidth="135.0" text="Консоль">
             <font>
-               <Font size="18.0"/>
+               <Font size="18.0" />
             </font>
          </Button>
-         <Button fx:id="btnVersions" mnemonicParsing="false" onAction="#showVersions" prefHeight="26.0"
-                 prefWidth="147.0" text="Версии">
+         <Button fx:id="btnVersions" mnemonicParsing="false" onAction="#showVersions" prefHeight="26.0" prefWidth="147.0" text="Версии">
             <font>
-               <Font size="18.0"/>
+               <Font size="18.0" />
             </font>
          </Button>
-         <Button fx:id="btnSettings" mnemonicParsing="false" onAction="#showSettings" prefHeight="26.0"
-                 prefWidth="118.0" text="Настройки">
+         <Button fx:id="btnSettings" mnemonicParsing="false" onAction="#showSettings" prefHeight="26.0" prefWidth="118.0" text="Настройки">
             <font>
-               <Font size="18.0"/>
+               <Font size="18.0" />
             </font>
          </Button>
       </VBox>
@@ -37,18 +34,10 @@
 
    <center>
       <StackPane prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <AnchorPane fx:id="paneInstances" visible="false">
-            <Label text="Инстанты" styleClass="pixel-label"/>
-         </AnchorPane>
-         <AnchorPane fx:id="paneConsole" visible="false">
-            <Label text="Консоль" styleClass="pixel-label"/>
-         </AnchorPane>
-         <AnchorPane fx:id="paneVersions" visible="false">
-            <Label text="Установленные версии" styleClass="pixel-label"/>
-         </AnchorPane>
-         <AnchorPane fx:id="paneSettings" visible="false">
-            <Label text="Настройки" styleClass="pixel-label"/>
-         </AnchorPane>
+         <fx:include fx:id="paneInstances" source="panels/instances.fxml"/>
+         <fx:include fx:id="paneConsole" source="panels/console.fxml"/>
+         <fx:include fx:id="paneVersions" source="panels/versions.fxml"/>
+         <fx:include fx:id="paneSettings" source="panels/settings.fxml"/>
       </StackPane>
    </center>
 
