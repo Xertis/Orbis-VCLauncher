@@ -2,27 +2,39 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-            prefHeight="400.0" prefWidth="600.0"
-            xmlns="http://javafx.com/javafx/17.0.12"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="org.orbis.orbis.MainController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.orbis.orbis.MainController">
 
    <left>
-      <VBox prefHeight="200.0" prefWidth="100.0"
-            BorderPane.alignment="CENTER"
-            style="-fx-background-color: rgba(43, 43, 43, 0.2);">
+      <VBox prefHeight="200.0" prefWidth="100.0" styleClass="dark-vbox" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="btnVersions" mnemonicParsing="false" prefHeight="26.0" prefWidth="129.0" text="Версии" onAction="#showVersions"/>
-            <Button fx:id="btnConsole" mnemonicParsing="false" prefHeight="26.0" prefWidth="135.0" text="Консоль" onAction="#showConsole"/>
+            <Button fx:id="btnInstances" mnemonicParsing="false" onAction="#showInstances" prefHeight="26.0" prefWidth="129.0" text="Инстанты">
+               <font>
+                  <Font size="18.0" />
+               </font></Button>
+            <Button fx:id="btnConsole" mnemonicParsing="false" onAction="#showConsole" prefHeight="26.0" prefWidth="135.0" text="Консоль">
+               <font>
+                  <Font size="18.0" />
+               </font></Button>
+            <Button fx:id="btnVersions" mnemonicParsing="false" onAction="#showVersions" prefHeight="26.0" prefWidth="147.0" text="Версии">
+               <font>
+                  <Font size="18.0" />
+               </font></Button>
+            <Button fx:id="btnSettings" mnemonicParsing="false" onAction="#showSettings" prefHeight="26.0" prefWidth="118.0" text="Настройки">
+               <font>
+                  <Font size="18.0" />
+               </font></Button>
          </children>
       </VBox>
    </left>
 
    <center>
       <StackPane prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <!-- Здесь можно добавлять отдельные AnchorPane для экранов -->
+         <AnchorPane fx:id="instances"/>
+         <AnchorPane fx:id="console" visible="false"/>
+         <AnchorPane fx:id="versions" visible="false"/>
+         <AnchorPane fx:id="settings" visible="false"/>
       </StackPane>
    </center>
 

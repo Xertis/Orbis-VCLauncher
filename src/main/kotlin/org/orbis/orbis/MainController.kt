@@ -2,23 +2,21 @@ package org.orbis.orbis
 
 import javafx.fxml.FXML
 import javafx.scene.control.Button
-import javafx.scene.control.Label
 
 class MainController {
-    @FXML
-    lateinit var btnConsole: Button
-    @FXML
-    lateinit var btnVersions: Button
+    @FXML lateinit var btnConsole: Button
+    @FXML lateinit var btnInstances: Button
+    @FXML lateinit var btnVersions: Button
+    @FXML lateinit var btnSettings: Button
 
-    @FXML
-    fun initialize() {
-        btnVersions.isDisable = true
+    @FXML fun initialize() {
+        btnInstances.isDisable = true
     }
 
     private fun changePage(page: String) {
         println(page)
         val buttons = arrayOf(
-            btnConsole, btnVersions
+            btnConsole, btnInstances, btnVersions, btnSettings
         )
 
         for (button in buttons) {
@@ -26,13 +24,19 @@ class MainController {
         }
     }
 
-    @FXML
-    private fun showVersions() {
+    @FXML private fun showInstances() {
+        changePage(btnInstances.id)
+    }
+
+    @FXML private fun showConsole() {
+        changePage(btnConsole.id)
+    }
+
+    @FXML private fun showVersions() {
         changePage(btnVersions.id)
     }
 
-    @FXML
-    private fun showConsole() {
-        changePage(btnConsole.id)
+    @FXML private fun showSettings() {
+        changePage(btnSettings.id)
     }
 }
