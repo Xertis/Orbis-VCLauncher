@@ -12,7 +12,7 @@ class Orbis : Application() {
         Font.loadFont(Orbis::class.java.getResourceAsStream("/org/orbis/orbis/fonts/ithaca.ttf"), 18.0)
 
         val fxmlLoader = FXMLLoader(Orbis::class.java.getResource("main.fxml"))
-        val scene = Scene(fxmlLoader.load(), 320.0, 240.0)
+        val scene = Scene(fxmlLoader.load(), 700.0, 400.0)
 
         stage.title = "Orbis"
         stage.scene = scene
