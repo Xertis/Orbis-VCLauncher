@@ -37,3 +37,4 @@ build/
 ### Mac OS ###
 .DS_Store
 /versions
+src/main/resources/org/orbis/application/icon2.png
