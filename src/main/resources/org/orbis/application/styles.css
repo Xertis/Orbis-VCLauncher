@@ -1,0 +1,119 @@
+.root, .border-pane {
+    -fx-background-color: #2b2b2b;
+}
+
+.version-tile {
+    -fx-border-color: #555555;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px;
+    -fx-padding: 5px;
+}
+
+.version-tile:hover {
+    -fx-border-color: #1abc9c;
+}
+
+.pixel-label {
+    -fx-font-family: 'Ithaca' !important;
+    -fx-font-size: 18px;
+    -fx-text-fill: #cccccc;
+}
+
+.dark-vbox {
+    -fx-background-color: #3c3f41;
+}
+
+.flow-pane {
+    -fx-background-color: #3c3f41;
+    -fx-hgap: 10px;
+    -fx-vgap: 10px;
+    -fx-padding: 5px;
+}
+
+.button {
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+    -fx-font-family: 'Ithaca';
+    -fx-font-size: 18px;
+    -fx-background-color: #555555;
+    -fx-text-fill: #cccccc;
+    -fx-border-color: #2b2b2b;
+}
+
+.button:hover {
+    -fx-background-color: #6a6a6a;
+}
+
+.button:disabled {
+    -fx-background-color: #2b2b2b;
+    -fx-text-fill: #ffffff;
+}
+
+.choice-box {
+    -fx-font-family: 'Ithaca';
+    -fx-font-size: 18px;
+    -fx-text-fill: #cccccc;
+    -fx-background-color: #555555;
+    -fx-border-color: #2b2b2b;
+    -fx-border-radius: 3px;
+    -fx-padding: 3px;
+}
+
+.choice-box:hover {
+    -fx-background-color: #6a6a6a;
+}
+
+.choice-box .arrow-button {
+    -fx-background-color: transparent;
+}
+
+.choice-box .arrow {
+    -fx-background-color: #cccccc;
+}
+
+.choice-box .context-menu .menu-item:focused {
+    -fx-background-color: #1abc9c;
+}
+
+.context-menu {
+    -fx-background-color: #3c3f41;
+    -fx-border-color: #2b2b2b;
+    -fx-max-height: 300px;
+}
+
+.context-menu .menu-item .label {
+    -fx-text-fill: #cccccc;
+    -fx-font-family: 'Ithaca';
+    -fx-font-size: 18px;
+}
+
+.context-menu .menu-item:focused {
+    -fx-background-color: #1abc9c;
+}
+
+.progress-bar {
+    -fx-accent: #1abc9c;
+    -fx-background-color: #555555;
+    -fx-control-inner-background: #3c3f41;
+    -fx-padding: 2px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+}
+
+.progress-bar .bar {
+    -fx-background-color: -fx-accent;
+    -fx-background-insets: 0;
+    -fx-border-radius: 0px;
+    -fx-background-radius: 3px;
+    -fx-padding: 0;
+}
+
+.progress-bar:indeterminate .bar {
+    -fx-background-color: linear-gradient(to left, transparent, -fx-accent, transparent);
+    -fx-padding: 0;
+}
+
+* {
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+}

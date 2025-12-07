@@ -1,8 +1,7 @@
-package org.orbis.orbis.controllers
+package org.orbis.application.controllers
 
 import javafx.fxml.FXML
 import javafx.scene.layout.AnchorPane
-import javafx.scene.layout.HBox
 
 class SettingsController {
     @FXML

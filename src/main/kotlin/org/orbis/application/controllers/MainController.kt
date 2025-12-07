@@ -1,4 +1,4 @@
-package org.orbis.orbis.controllers
+package org.orbis.application.controllers
 
 import javafx.fxml.FXML
 import javafx.scene.control.Button

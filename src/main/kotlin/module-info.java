@@ -1,10 +1,11 @@
-module org.orbis.orbis {
+module org.orbis.application {
     requires javafx.controls;
     requires javafx.fxml;
     requires kotlin.stdlib;
+    requires org.json;
 
 
-    opens org.orbis.orbis to javafx.fxml;
-    opens org.orbis.orbis.controllers to javafx.fxml;
-    exports org.orbis.orbis;
+    opens org.orbis.application to javafx.fxml;
+    opens org.orbis.application.controllers to javafx.fxml;
+    exports org.orbis.application;
 }
