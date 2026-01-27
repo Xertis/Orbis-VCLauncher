@@ -10,7 +10,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
       - name: Checkout code
@@ -22,6 +22,26 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
           cache: 'maven'
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+            python-version: '3.12'
+
+      - name: Clone VCIM repository
+        run: |
+            git clone https://github.com/play-go/vcim/tree/main vcim_main
+            cd vcim_main
+
+      - name: Install dependencies
+        run: |
+            cd cloned_repo
+            python -m pip install --upgrade pip
+            python -m pip install pyinstaller
+            python -m pip install -r requirements.txt
+
+      - name: Build VCIM
+        run: pyinstaller vcim.py --onefile
 
       - name: Build with Maven
         run: mvn clean compile
