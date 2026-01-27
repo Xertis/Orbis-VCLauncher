@@ -30,7 +30,7 @@ jobs:
 
       - name: Clone VCIM repository
         run: |
-            git clone https://github.com/play-go/vcim/tree/main vcim_main
+            git clone https://github.com/play-go/vcim.git vcim_main
             cd vcim_main
 
       - name: Install dependencies
