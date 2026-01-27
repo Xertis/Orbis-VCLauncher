@@ -32,6 +32,7 @@ jobs:
         run: |
             git clone https://github.com/play-go/vcim.git vcim_main
             cd vcim_main
+            dir
 
       - name: Install dependencies
         run: |
