@@ -36,13 +36,15 @@ jobs:
         run: |
             cd vcim_main
             python -m pip install --upgrade pip
+
+            python -m pip install pywin32-ctypes pypiwin32
             python -m pip install pyinstaller
             python -m pip install -r requirements.txt
 
       - name: Build VCIM
         run: |
             cd vcim_main
-            pyinstaller vcim.py --onefile
+            pyinstaller vcim.py --onefile --clean
 
       - name: Zip VCIM executable
         run: |
