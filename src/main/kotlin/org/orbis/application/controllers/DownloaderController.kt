@@ -5,15 +5,9 @@ import javafx.scene.control.Button
 import javafx.scene.control.ChoiceBox
 import javafx.scene.control.ProgressBar
 import javafx.stage.Stage
-import org.orbis.application.Globals
-import org.orbis.application.libs.network.Github
-import org.orbis.application.libs.network.Release
+import org.orbis.core.Globals
+import org.orbis.core.Vcim
 
-object DataCache {
-    val githubReleases: List<Release> by lazy {
-        Github.getReleases()
-    }
-}
 
 class DownloaderController {
     @FXML lateinit var progressBar: ProgressBar
@@ -23,68 +17,31 @@ class DownloaderController {
 
     @FXML
     fun initialize() {
-        val releases = DataCache.githubReleases
+        initializeReleases()
+    }
 
-        for (release in releases) {
-            val hasNeededVersion = release.assets.any { asset ->
-                val assetName = asset.name.lowercase()
+    private fun initializeReleases() {
+        val releases = Vcim.getVersions()
 
-                assetName.endsWith(Globals.versionsExt)
-            }
-
-            if (hasNeededVersion) {
-                versions.items.add(release.name)
-            }
-
+        releases.forEach {
+            versions.items.add(it)
         }
 
-        versions.value = releases[0].name
-
+        versions.value = versions.items[0]
     }
 
     fun setDialogStage(dialogStage: Stage) {
         this.dialogStage = dialogStage
     }
 
-    private fun downloadVersion(release: Release) {
-        val assets = release.assets
-        val indx = assets.indexOfFirst { asset ->
-            val assetName = asset.name.lowercase()
-
-            assetName.endsWith(Globals.versionsExt)
-        }
-
-        if (indx == -1) {
-            println("релиз не найден")
-            println(assets)
-            return
-        }
-
-        progressBar.isVisible = true
-
-        val fileName = "${release.name}.${release.assets[indx].name.substringAfterLast(".")}"
-
-        println(Globals.versionsDir + fileName)
-        Github.downloadFileWithProgress(
-            fileData = assets[indx],
-            destinationPath = Globals.versionsDir + fileName,
-            onProgressUpdate = { progress ->
-                progressBar.progress = progress / 100.0
-            },
-            onEnd = { status ->
-                println("статус скачивания: $status")
-                progressBar.isVisible = false
-                progressBar.progress = 0.0
-            }
-
-        )
+    private fun downloadVersion(version: String) {
+        Vcim.createInstant("mda", version)
     }
 
     @FXML
     private fun downloadVersionCallback() {
-        val releases = DataCache.githubReleases
-        for (release in releases) {
-            if (release.name == versions.value) {
+        for (release in Vcim.getVersions()) {
+            if (release == versions.value) {
                 downloadVersion(release)
                 break
             }

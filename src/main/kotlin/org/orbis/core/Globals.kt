@@ -1,4 +1,4 @@
-package org.orbis.application
+package org.orbis.core
 
 object Globals {
     val tempOs = System.getProperty("os.name").lowercase().replace(" ", "-")
@@ -13,5 +13,10 @@ object Globals {
         "windows" -> "zip"
         "linux" -> "appimage"
         else -> "dmg"
+    }
+
+    val vcimFile = when(osName) {
+        "windows" -> "vcim.exe"
+        else -> "vcim"
     }
 }

@@ -14,7 +14,8 @@ import javafx.scene.layout.AnchorPane
 import javafx.scene.layout.VBox
 import javafx.stage.Modality
 import javafx.stage.Stage
-import org.orbis.application.Globals
+import org.orbis.core.Globals
+import org.orbis.core.Vcim
 import java.io.File
 
 import java.util.concurrent.Executors
@@ -23,7 +24,7 @@ import java.util.concurrent.TimeUnit
 import javafx.application.Platform
 import javafx.scene.layout.FlowPane
 
-class VersionsController {
+class VersionsController : ControllerInterface {
     @FXML
     lateinit var paneVersions: AnchorPane
     @FXML
@@ -44,29 +45,28 @@ class VersionsController {
         refreshVersions()
 
         scheduler.scheduleAtFixedRate({
-            Platform.runLater {
-                refreshVersions()
-            }
         }, 0, 1, TimeUnit.SECONDS)
     }
 
-    private fun refreshVersions() {
-        //println("обновляем список ${System.currentTimeMillis()}")
-        boxVersions.children.clear()
-
-        val directory = File(Globals.versionsDir)
-        val files: Array<File>? = directory.listFiles()
-
-        if (files == null) return
-
-        for (file in files) {
-            if (file.isFile() && file.extension.lowercase() == Globals.versionsExt) {
-                addVersionTile(file.name.substringBeforeLast('.'))
-            }
-        }
+    override fun onOpen() {
+        refreshVersions()
     }
 
-    fun shutdownScheduler() {
+    private fun refreshVersions() {
+        Thread {
+            val versions = Vcim.getCachedVersions()
+
+            Platform.runLater {
+                boxVersions.children.clear()
+
+                versions.forEach {
+                    addVersionTile(it)
+                }
+            }
+        }.start()
+    }
+
+    private fun shutdownScheduler() {
         scheduler.shutdownNow()
         println("VersionsController scheduler shut down.")
     }
@@ -143,12 +143,8 @@ class VersionsController {
         deleteItem.setOnAction {
             println("Удаление версии $tileName...")
             try {
-                val versionPath = "${Globals.versionsDir}$tileName.${Globals.versionsExt}"
-                val versionFile = File(versionPath)
-
-                if (!versionFile.exists()) return@setOnAction
-
-                println(versionFile.delete())
+                println(Vcim.deleteCachedVersion(tileName))
+                refreshVersions()
             } catch (e: Exception) {
                 println("Ошибка при удалении версии: $e")
             }

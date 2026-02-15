@@ -6,9 +6,11 @@ import javafx.scene.Scene
 import javafx.stage.Stage
 import javafx.scene.text.Font
 import javafx.scene.image.Image
+import org.orbis.core.Vcim
 
 class Orbis : Application() {
     override fun start(stage: Stage) {
+        Vcim.init()
         Font.loadFont(Orbis::class.java.getResourceAsStream("/org/orbis/application/fonts/ithaca.ttf"), 18.0)
 
         val fxmlLoader = FXMLLoader(Orbis::class.java.getResource("main.fxml"))

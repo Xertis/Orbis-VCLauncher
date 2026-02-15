@@ -3,12 +3,17 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.control.Label?>
 
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
 <AnchorPane fx:id="paneInstances"
             fx:controller="org.orbis.application.controllers.InstancesController"
             prefHeight="400.0" prefWidth="500.0"
             xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1">
 
     <Label styleClass="pixel-label" text="Инстанты" AnchorPane.topAnchor="5.0" AnchorPane.leftAnchor="5.0"/>
-    <HBox fx:id="hboxInstances" layoutX="-1.0" layoutY="18.0" prefHeight="83.0" prefWidth="504.0" AnchorPane.topAnchor="50.0" AnchorPane.leftAnchor="0.0">
-    </HBox>
+    <BorderPane layoutY="27.0" prefHeight="373.0" prefWidth="500.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="27.0">
+        <center>
+            <FlowPane fx:id="boxInstances" prefHeight="378.0" prefWidth="646.0" BorderPane.alignment="CENTER" />
+        </center>
+    </BorderPane>
 </AnchorPane>

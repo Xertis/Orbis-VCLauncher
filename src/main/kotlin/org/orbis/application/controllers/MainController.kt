@@ -16,6 +16,8 @@ class MainController {
     @FXML lateinit var btnSettings: Button
     @FXML lateinit var panels: Array<Pair<Button, AnchorPane>>
 
+    @FXML lateinit var paneVersionsController: VersionsController
+
     @FXML
     fun initialize() {
         panels = arrayOf(
@@ -25,6 +27,12 @@ class MainController {
             Pair(btnSettings, paneSettings)
         )
         changePage(getPage(btnInstances))
+    }
+
+    private fun triggerOnOpen(paneId: String) {
+        when (paneId) {
+            "paneVersions" -> paneVersionsController.onOpen()
+        }
     }
 
     private fun getPage(button: Button): AnchorPane {
@@ -41,10 +49,15 @@ class MainController {
             val button = pair.first
             val panel = pair.second
 
+            val isSelected = panel.id == pane.id
             val isDisable = panel.id == pane.id
 
             button.isDisable = isDisable
             panel.isVisible = isDisable
+
+            if (isSelected) {
+                triggerOnOpen(panel.id)
+            }
         }
     }
 
