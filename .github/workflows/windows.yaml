@@ -23,36 +23,38 @@ jobs:
           distribution: 'temurin'
           cache: 'maven'
 
-      - name: Set up PyPy 3.11
+      - name: Set up Python 3.12
         uses: actions/setup-python@v5
         with:
-          python-version: 'pypy-3.11'
+          python-version: '3.12'
+          cache: 'pip'
 
       - name: Clone VCIM repository
         run: |
             git clone https://github.com/play-go/vcim.git vcim_main
 
-      - name: Install dependencies
+      - name: Install Dependencies
         run: |
             cd vcim_main
-            python -m pip install pywin32-ctypes
-            python -m pip install pyinstaller
+            python -m pip install --upgrade pip
+            python -m pip install nuitka zstandard
             python -m pip install -r requirements.txt
 
-      - name: Build VCIM
+      - name: Build Fast VCIM EXE
         run: |
             cd vcim_main
-            pyinstaller vcim.py --onefile --clean
+            python -m nuitka --standalone --onefile --mingw64 --assume-yes-for-downloads vcim.py
 
       - name: Zip VCIM executable
+        shell: pwsh
         run: |
-            Compress-Archive -Path vcim_main/dist/vcim.exe -DestinationPath vcim_dist.zip
+            Compress-Archive -Path vcim_main/vcim.exe -DestinationPath vcim_fast.zip
 
-      - name: Upload VCIM artifact
+      - name: Upload VCIM ZIP
         uses: actions/upload-artifact@v4
         with:
-          name: vcim-binary
-          path: vcim_dist.zip
+          name: vcim-fast-exe
+          path: vcim_fast.zip
 
       - name: Build with Maven
         run: mvn clean compile
