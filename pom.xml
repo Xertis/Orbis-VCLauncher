@@ -13,7 +13,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <junit.version>5.10.2</junit.version>
         <kotlin.version>2.3.0</kotlin.version>
-        <java.target>17</java.target>
+        <java.target>24</java.target>
         <javafx.version>25.0.2</javafx.version>
         <serialization.version>1.7.3</serialization.version>
     </properties>
